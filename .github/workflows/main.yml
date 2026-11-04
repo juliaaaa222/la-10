@@ -18,7 +18,4 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Автоматическая сборка проекта
-      run: dotnet build lab10App.csproj --configuration Release
-
-    - name: Сборка Docker-образа
-      run: docker build -t lab10-app:latest .
+      run: dotnet build *.csproj --configuration Release

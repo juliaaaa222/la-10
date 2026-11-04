@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +18,4 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Автоматическая сборка проекта
-      run: |
-        PROJECT_FILE=$(find . -name "*.csproj" | head -n 1)
-        echo "Найден проект: $PROJECT_FILE"
-        dotnet build "$PROJECT_FILE" --configuration Release
+      run: dotnet build lab10App.csproj --configuration Release

@@ -1,0 +1,24 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Клонирование кода
+      uses: actions/checkout@v3
+
+    - name: Настройка .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Автоматическая сборка проекта
+      run: dotnet build --configuration Release
+
+    - name: Сборка Docker-образа
+      run: docker build -t lab10-app:latest .
